@@ -1,0 +1,32 @@
+/**
+* Hi curious student! :)
+* This a CSS Trick to keep the footer at the bottom.
+* Find out more modern CSS tricks at:
+* https://moderncss.dev/
+*/
+* {
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #f9f9f9;
+}
+#__next {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+#__next > main {
+  max-width: 80ch;
+}
+
+@media (max-width: 670px) {
+  *{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 500px) {
+  *{
+    font-size: 10px;
+  }
+}

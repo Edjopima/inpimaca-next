@@ -1,0 +1,23 @@
+.header {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.header ul li {
+  margin-left: 20px;
+}
+
+.logo {
+  border-radius: 45%;
+  width: 120px;
+  height: 80px;
+}

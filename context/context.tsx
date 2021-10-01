@@ -13,7 +13,7 @@ type userType = {
     userName: string,
 }
 
-type cartItemType = {
+export type CartItemType = {
     product: ProductType,
     quantity: number,
 }
@@ -21,7 +21,7 @@ type cartItemType = {
 type initialStateType = {
   inventory: Array<ProductType>
   loggedInUser: userType | null
-  shoppingCart: Array<cartItemType>
+  shoppingCart: Array<CartItemType>
 }
 
 const initialState: initialStateType = {

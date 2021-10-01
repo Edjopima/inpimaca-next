@@ -2,6 +2,10 @@
   width: 100vw;
   text-align: center;
   color: #434041;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .inventory h1 {
@@ -18,16 +22,19 @@
 
 .inventoryHeader{
   display: flex;
-  border-bottom: 2px solid #EF4080;
+  border: 2px solid #EF4080;
+  width: 80vw;
 }
 
 .inventoryHeader p{
   width: 25%;
-  background-color: #ef40802a
+  background-color: #ef40802a;
 }
 
 .inventoryItem {
   display: flex;
+  margin-bottom: 2%;
+  padding: 1%;
 }
 
 .inventoryItem p{
@@ -37,4 +44,20 @@
 .inventoryTable {
   overflow:auto;
   height: 65vh;
+  border: 2px solid #EF4080;
+  width: 80vw;
+}
+
+.icon {
+  fill: #EF4080;
+  color: #EF4080;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 25%;
 }

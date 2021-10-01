@@ -1,23 +1,28 @@
 .header {
   display:flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-}
-
-.header ul {
-  display: flex;
   justify-content: space-between;
   align-items: center;
-  list-style: none;
-}
-
-.header ul li {
-  margin-left: 20px;
+  padding: 1rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 .logo {
   border-radius: 45%;
+  margin-left: 10%;
   width: 120px;
   height: 80px;
+}
+
+.shoppingCartIcon {
+  fill: #EF4080;
+  margin-right: 0.5rem;
+}
+
+.shoppingCart {
+  display: flex;
+  align-items: center;
+  color: #EF4080;
+  text-transform: uppercase;
+  font-weight: bold;
 }

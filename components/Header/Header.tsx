@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div></div>
+      <div className={styles.separator}></div>
       <div className={styles.logo}>
         <Image src={Logo} width={120} height={80} layout='responsive' className={styles.logo}/>
       </div>

@@ -1,0 +1,40 @@
+.inventory{
+  width: 100vw;
+  text-align: center;
+  color: #434041;
+}
+
+.inventory h1 {
+  font-size: 2.5rem;
+}
+
+.dolarMonitor {
+  margin: 1rem;
+}
+
+.dolarMonitor p {
+  font-size: 1.5rem;
+}
+
+.inventoryHeader{
+  display: flex;
+  border-bottom: 2px solid #EF4080;
+}
+
+.inventoryHeader p{
+  width: 25%;
+  background-color: #ef40802a
+}
+
+.inventoryItem {
+  display: flex;
+}
+
+.inventoryItem p{
+  width: 25%;
+}
+
+.inventoryTable {
+  overflow:auto;
+  height: 65vh;
+}

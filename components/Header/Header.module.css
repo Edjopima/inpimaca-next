@@ -3,13 +3,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  padding-right: 2rem;
-  padding-left: 2rem;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+.separator {
+  width: 20%;
 }
 
 .logo {
   border-radius: 45%;
-  margin-left: 10%;
   width: 120px;
   height: 80px;
 }
@@ -25,4 +28,5 @@
   color: #EF4080;
   text-transform: uppercase;
   font-weight: bold;
+  width: 20%;
 }

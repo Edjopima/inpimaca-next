@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.separator}></div>
-      <Link href="/home">
+      <Link href="/">
       <div className={styles.logo}>
         <Image src={Logo} width={120} height={80} layout='responsive' className={styles.logo}/>
       </div>

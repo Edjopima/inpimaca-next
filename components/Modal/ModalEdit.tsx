@@ -15,6 +15,11 @@ const ModalEdit:React.FC<Props> = ({type, product, onClose, }) => {
   const [error, setError] = useState('');
 
   const handleSubmit = async () => {
+    setError('');
+    if (!name || !price || !category) {
+      setError('Todos los campos son requeridos');
+      return;
+    }
     if(type === 'edit'){
       const data = {
         id: product.id,
@@ -32,7 +37,7 @@ const ModalEdit:React.FC<Props> = ({type, product, onClose, }) => {
           }
         })
         const json = await res.json()
-        if(json.status === 'success'){
+        if(json.id){
           onClose()
         }else{
           setError('Error al Editar Producto')
@@ -56,7 +61,7 @@ const ModalEdit:React.FC<Props> = ({type, product, onClose, }) => {
           }
         })
         const json = await res.json()
-        if(json.status === 'success'){
+        if(json.id){
           onClose()
         }else{
           setError('Error al Eliminar Producto')
@@ -70,6 +75,7 @@ const ModalEdit:React.FC<Props> = ({type, product, onClose, }) => {
   return (
     <div className={styles.editModal}>
       <h1>{type === 'edit' ? 'Editar' : 'Agregar'} Producto</h1>
+      {error && <p className={styles.error}>{error}</p>}
       <input type="text" placeholder='Producto' value={name} onChange={e=>setName(e.target.value)}/>
       <input type="number" placeholder='Precio' value={price} onChange={e=>setPrice(parseFloat(e.target.value))}/>
       <select value={category} onChange={e=>setCategory(e.target.value)} className={styles.selector}>

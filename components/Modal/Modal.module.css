@@ -40,6 +40,7 @@
 .buttonContainer {
   width: 70%;
   display: flex;
+  margin-top: 2%;
   justify-content: space-between;
 }
 
@@ -74,4 +75,40 @@
   border-bottom: 1px solid #EF4080;
   color: #EF4080;
   font-size: 1rem;
+}
+
+.addToCart {
+  width: 50%;
+  margin: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.addToCart input {
+  width: 50%;
+  border-bottom: 1px solid #EF4080;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.addToCart p {
+  font-size: 1rem;
+  color: #EF4080;
+  border: solid 1px #EF4080;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2%;
+}
+
+.addToCart p:hover {
+  cursor: pointer;
+  background-color: #EF4080;
+  color: #f9f9f9;
+}
+
+.error{
+  color: red;
+  margin-bottom: 2%;
 }

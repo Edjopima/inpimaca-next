@@ -1,6 +1,8 @@
 import React from 'react';
 import { ProductType } from '../../context/context';
 import styles from './Modal.module.css';
+import ModalAddToCart from './ModalAddToCart';
+import ModalDelete from './ModalDelete';
 import ModalEdit from './ModalEdit';
 
 type Props = {
@@ -11,7 +13,6 @@ type Props = {
 }
 
 const Modal: React.FC<Props> = ({show,product,type,onClose}) => {
-  console.log(product,type);
   return (
     show && (
     <div className={styles.modal}>
@@ -23,6 +24,16 @@ const Modal: React.FC<Props> = ({show,product,type,onClose}) => {
             onClose={onClose}
           />
         )}
+        {type === 'remove' && 
+        <ModalDelete
+          product={product}
+          onClose={onClose}
+        />}
+        {type==='addToCart' && 
+        <ModalAddToCart
+          product={product}
+          onClose={onClose}
+        />}
       </div>
     </div>)
   );

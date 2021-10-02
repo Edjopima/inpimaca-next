@@ -21,22 +21,19 @@ const ModalDelete: React.FC<Props> = ({onClose, product}) => {
         body: JSON.stringify(product)
       });
       const data = await response.json();
-      if(data.error){
-        setError(data.error);
-      }else{
-        onClose();
-      }
+      onClose();
     }catch(err){
-      setError(err.message);
+      setError('No se pudo eliminar el producto');
     }
   }
+
 
   return (
     <div className={styles.editModal}>
       <h1>Eliminar Producto</h1>
       {error && <p className={styles.error}>{error}</p>}
       <p>¿Está seguro que desea eliminar este producto?</p>
-      <p>{product.product}</p>
+      {product&&<p>{product.product}</p>}
       <div className={styles.buttonContainer}>
         <button onClick={handleSubmit} >Eliminar</button>
         <button onClick={onClose} className={styles.cancel}>Cancelar</button>

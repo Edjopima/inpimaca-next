@@ -53,6 +53,12 @@
   color: #EF4080;
   width: 1.2rem;
   height: 1.2rem;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
 }
 
 .iconContainer {
@@ -60,4 +66,61 @@
   justify-content: space-around;
   align-items: center;
   width: 25%;
+}
+
+.shoppingCartTable {
+  overflow:auto;
+  height: 50vh;
+  border: 2px solid #EF4080;
+  width: 80vw;
+}
+
+.shoppingCartTotal {
+  border: 2px solid #EF4080;
+  width: 80vw;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.totalContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  margin:2%;
+}
+.totalContainer p {
+  font-size: 1.5rem;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+}
+
+.buttonContainer button {
+  font-size: 1rem;
+  background: none;
+  border:2px solid #EF4080;
+  padding: 2% 4%;
+  color: #EF4080;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.buttonContainer button:hover {
+  background: #EF4080;
+  color: white;
+  transform: scale(1.1);
+}
+
+.buttonContainer .cancel {
+  border:none;
 }

@@ -1,5 +1,5 @@
 import React, {createContext} from 'react';
-import {inventoryReducer, cartReducer, userReducer} from './reducers'
+import {inventoryReducer, cartReducer, userReducer, dolarReducer} from './reducers'
 
 export type ProductType = {
     id: number,
@@ -18,16 +18,23 @@ export type CartItemType = {
     quantity: number,
 }
 
+export type DolarType = {
+    name: string,
+    value: number,
+}
+
 type initialStateType = {
   inventory: Array<ProductType>
   loggedInUser: userType | null
   shoppingCart: Array<CartItemType>
+  dolarOptions: Array<DolarType>
 }
 
 const initialState: initialStateType = {
     inventory: [],
     loggedInUser: null,
     shoppingCart: [],
+    dolarOptions: [],
 }
 
 const Context = createContext<{
@@ -38,10 +45,11 @@ const Context = createContext<{
         dispatch: () => null,
     });
 
-const mainReducer = ({inventory, shoppingCart, loggedInUser}, action) => ({
+const mainReducer = ({inventory, shoppingCart, loggedInUser, dolarOptions}, action) => ({
     inventory: inventoryReducer(inventory, action),
     shoppingCart: cartReducer(shoppingCart, action),
     loggedInUser: userReducer(loggedInUser, action),
+    dolarOptions:dolarReducer(dolarOptions, action)
 })
 
 const ContextProvider: React.FC = ({children}) => {

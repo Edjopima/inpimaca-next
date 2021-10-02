@@ -1,7 +1,7 @@
 import React,{useContext, useEffect} from 'react';
 import styles from './Home.module.css'
 import fetch from 'isomorphic-unfetch'
-import { Context } from '../../context/context';
+import { Context, DolarType } from '../../context/context';
 import { ProductType } from '../../context/context';
 import { NextPage } from 'next';
 import Modal from '../../components/Modal/Modal';
@@ -36,11 +36,20 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
   const [modalType, setModalType] = React.useState("edit")
 
   useEffect(() => {
+    const dolarOptions:Array<DolarType> = [{
+      name: "Dolar Today",
+      value: dolarToday,
+    },{
+      name: "Dolar Compra",
+      value: dolarChange,
+    }] 
     dispatch({type:'SET_INVENTORY',payload:inventory})
-  },[inventory])
+    dispatch({type:'SET_DOLAR',payload:dolarOptions})
+  },[inventory, dolarToday])
 
   const openModal = (product:ProductType, type:string) => {
     setSelectedProduct(product)
+    setModalType(type)
     setModalOpen(true)
   }
 
@@ -66,9 +75,6 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
         {state.inventory.map(item => (
           <div
             className={styles.inventoryItem} 
-            onClick={() => {
-              dispatch({type: 'ADD_ITEM', payload: item})
-            }}
             key={item.id}
           >
             <p>{item.product}</p>

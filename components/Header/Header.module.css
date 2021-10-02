@@ -12,6 +12,7 @@
 }
 
 .logo {
+  cursor: pointer;
   border-radius: 45%;
   width: 120px;
   height: 80px;
@@ -23,6 +24,7 @@
 }
 
 .shoppingCart {
+  cursor: pointer;
   display: flex;
   align-items: center;
   color: #EF4080;

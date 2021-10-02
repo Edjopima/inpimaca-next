@@ -12,9 +12,11 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.separator}></div>
+      <Link href="/home">
       <div className={styles.logo}>
         <Image src={Logo} width={120} height={80} layout='responsive' className={styles.logo}/>
       </div>
+      </Link>
       <Link href='/shoppingCart'>
         <div className={styles.shoppingCart}>
           <ShoppingCartIcon width={40} height={40} className={styles.shoppingCartIcon}/>

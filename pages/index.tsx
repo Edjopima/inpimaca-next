@@ -36,6 +36,7 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
   const [selectedProduct, setSelectedProduct] = React.useState<ProductType | null>(null)
   const [modalOpen, setModalOpen] = React.useState(false)
   const [modalType, setModalType] = React.useState("edit")
+  const [filteredInventory, setFilteredInventory] = React.useState<ProductType[]>(inventory)
 
   useEffect(() => {
     const dolarOptions:Array<DolarType> = [{
@@ -62,6 +63,14 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
     setModalOpen(false)
   }
 
+  const handleSearch = (query:string) => {
+    const filtered = inventory.filter(product => {
+      return product.product.toLowerCase().includes(query.toLowerCase())
+    })
+    setFilteredInventory(filtered)
+  }
+
+
   return (
     <div className={styles.inventory}>
       <h1>Lista de Precios</h1>
@@ -71,7 +80,7 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
       </div>
       <div className={styles.searchBox}>
         <Search className={`${styles.icon} ${styles.search}`}/>
-        <input type="text" placeholder="Buscar producto..."/>
+        <input type="text" placeholder="Buscar producto..." onChange={e=>handleSearch(e.target.value)}/>
         <Plus className={styles.icon} onClick={()=>openModal('add')}/>
       </div>
       <div className={styles.inventoryHeader}>
@@ -81,7 +90,7 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
           <p>Acciones</p>
         </div>
       <div className={styles.inventoryTable}>
-        {state.inventory.map(item => (
+        {filteredInventory.map(item => (
           <div
             className={styles.inventoryItem} 
             key={item.id}

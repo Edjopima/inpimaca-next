@@ -40,7 +40,7 @@ const index = () => {
       <div className={styles.shoppingCartTotal}>
         <div className={styles.totalContainer}>
           <p>Total USD: {total}</p>
-          <p>Total BS: {totalBs}</p>
+          <p>Total BS: {totalBs.toFixed(2)}</p>
         </div>
         <div className={styles.buttonContainer}>
           <button >Comprar</button>

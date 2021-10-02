@@ -25,13 +25,13 @@ export const cartReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_ITEM':
       //check if item already exists in cart and update quantity
-      const item = state.find(item => item.product.id === action.payload.id);
+      const item = state.find(item => item.product.id === action.payload.product.id);
       if (item) {
         return state.map(item => {
-          if (item.product.id === action.payload.id) {
+          if (item.product.id === action.payload.product.id) {
             return {
               ...item,
-              quantity: item.quantity + 1
+              quantity: item.quantity + action.payload.quantity
             };
           }
           return item;
@@ -39,7 +39,7 @@ export const cartReducer = (state, action) => {
       }
       return [...state, action.payload];
     case 'REMOVE_FROM_CART':
-      return state.filter(item => item.product.id !== action.payload.id);
+      return state.filter(item => item.product.id !== action.payload.product.id);
     case 'CLEAR_CART':
       return [];
     default:

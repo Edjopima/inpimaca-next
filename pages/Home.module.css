@@ -43,7 +43,7 @@
 
 .inventoryTable {
   overflow:auto;
-  height: 65vh;
+  height: 60vh;
   border: 2px solid #EF4080;
   width: 80vw;
 }
@@ -123,4 +123,37 @@
 
 .buttonContainer .cancel {
   border:none;
+}
+
+  
+  /* Search module */
+
+.searchBox {
+  background-color: #ef40802a;
+  width: 30vw;
+  height: 3vh;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchBox input {
+  width: 70%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  font-size: 1.1rem;
+  color: #434041;
+  outline: none;
+}
+
+.searchBox .icon {
+  background-color: transparent;
+  margin:1rem
+}
+
+.searchBox .search:hover {
+  transform: none;
+  cursor: unset;
 }

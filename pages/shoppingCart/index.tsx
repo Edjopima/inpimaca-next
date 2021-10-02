@@ -1,5 +1,5 @@
 import React,{useContext} from 'react';
-import styles from '../home/Home.module.css'
+import styles from '..//Home.module.css'
 import { Context } from '../../context/context';
 import Trash from '../../public/images/trash-solid.svg'
 

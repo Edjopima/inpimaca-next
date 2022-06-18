@@ -93,7 +93,7 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
         <p>Dolar Compra: {dolarChange.toFixed(2)}</p>
         <div className={styles.customDolarSelector}>
           <input type="checkbox" value="customDolarActive" checked={customDolarActive} onChange={(e) => handleCheck()}/>
-          {customDolarActive ? <input type="number" value={customDolar} onChange={(e) => setCustomDolar(parseFloat(e.target.value || 0))}/> : null}
+          {customDolarActive ? <input type="number" value={customDolar} onChange={(e) => setCustomDolar(parseFloat(e.target.value || '0'))}/> : null}
         </div>
       </div>
       <div className={styles.searchBox}>

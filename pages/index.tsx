@@ -32,13 +32,15 @@ type Props = {
 
 const Home:NextPage<Props> = ({inventory, dolarToday}) => {
   const {state,dispatch} = useContext(Context)
-  const dolarChange = dolarToday + 0.1
+  const [dolarChange, setDolarChange] = React.useState(dolarToday + 0.1)
   const [selectedProduct, setSelectedProduct] = React.useState<ProductType | null>(null)
   const [modalOpen, setModalOpen] = React.useState(false)
   const [modalType, setModalType] = React.useState("edit")
   const [filteredInventory, setFilteredInventory] = React.useState<ProductType[]>(inventory)
+  const [customDolar, setCustomDolar] = React.useState(dolarToday)
+  const [customDolarActive, setCustomDolarActive] = React.useState(false)
 
-  useEffect(() => {
+  useEffect(() => {    
     const dolarOptions:Array<DolarType> = [{
       name: "Dolar Today",
       value: dolarToday,
@@ -49,6 +51,14 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
     dispatch({type:'SET_INVENTORY',payload:inventory})
     dispatch({type:'SET_DOLAR',payload:dolarOptions})
   },[inventory, dolarToday])
+
+  useEffect(() => {
+    if (customDolarActive) {
+      setDolarChange(customDolar+0.1)
+    } else {
+      setDolarChange(dolarToday+0.1)
+    }
+  },[customDolarActive, customDolar, dolarToday])
 
   const openModal = (type:string, product?:ProductType) => {
     if (type !== "add") {
@@ -70,6 +80,10 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
     setFilteredInventory(filtered)
   }
 
+  const handleCheck = () => {
+    setCustomDolarActive(!customDolarActive)
+  }
+
 
   return (
     <div className={styles.inventory}>
@@ -77,6 +91,10 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
       <div className={styles.dolarMonitor}>
         <p>Dolar Today: {dolarToday}</p>
         <p>Dolar Compra: {dolarChange.toFixed(2)}</p>
+        <div className={styles.customDolarSelector}>
+          <input type="checkbox" value="customDolarActive" checked={customDolarActive} onChange={(e) => handleCheck()}/>
+          {customDolarActive ? <input type="number" value={customDolar} onChange={(e) => setCustomDolar(parseFloat(e.target.value || 0))}/> : null}
+        </div>
       </div>
       <div className={styles.searchBox}>
         <Search className={`${styles.icon} ${styles.search}`}/>

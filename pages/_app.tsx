@@ -9,7 +9,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <ContextProvider>
       <Layout>
         <Head>
-          <title>Eduardo Piña</title>
+          <title>Inpimaca</title>
         </Head>
           <Component {...pageProps} />
       </Layout>

@@ -10,6 +10,7 @@ import Trash from '../public/images/trash-solid.svg'
 import Cart from '../public/images/shopping-cart.svg'
 import Plus from '../public/images/plus-solid.svg'
 import Search from '../public/images/search-solid.svg'
+import { useRouter } from 'next/dist/client/router';
 
 export const getServerSideProps = async () => {
   const res = await fetch('https://inpimaca-api.herokuapp.com/inventario')
@@ -40,6 +41,8 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
   const [customDolar, setCustomDolar] = React.useState(dolarToday)
   const [customDolarActive, setCustomDolarActive] = React.useState(false)
 
+  const router = useRouter()
+
   useEffect(() => {    
     const dolarOptions:Array<DolarType> = [{
       name: "Dolar Today",
@@ -59,6 +62,13 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
       setDolarChange(dolarToday+0.1)
     }
   },[customDolarActive, customDolar, dolarToday])
+
+  useEffect(() => {
+    console.log(state.loggedInUser)
+    if (!state.loggedInUser) {
+      router.push('/login')
+    }
+  }, [])
 
   const openModal = (type:string, product?:ProductType) => {
     if (type !== "add") {

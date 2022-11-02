@@ -57,9 +57,9 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
 
   useEffect(() => {
     if (customDolarActive) {
-      setDolarChange(customDolar)
+      setDolarChange(customDolar+0.1)
     } else {
-      setDolarChange(dolarToday)
+      setDolarChange(dolarToday+0.1)
     }
   },[customDolarActive, customDolar, dolarToday])
 
@@ -100,7 +100,7 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
       <h1>Lista de Precios</h1>
       <div className={styles.dolarMonitor}>
         <p>Dolar BCV: {dolarToday}</p>
-        {/* <p>Dolar Compra: {dolarChange.toFixed(2)}</p> */}
+        <p>Dolar Compra: {dolarChange.toFixed(2)}</p>
         <div className={styles.customDolarSelector}>
           <input type="checkbox" value="customDolarActive" checked={customDolarActive} onChange={(e) => handleCheck()}/>
           {customDolarActive ? <input type="number" value={customDolar} onChange={(e) => setCustomDolar(parseFloat(e.target.value || '0'))}/> : null}

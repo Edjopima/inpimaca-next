@@ -17,7 +17,7 @@ export const getServerSideProps = async () => {
   const inventory = await res.json()
   const res2 = await fetch('https://s3.amazonaws.com/dolartoday/data.json')
   const dolarData = await res2.json()
-  const dolarToday = dolarData.USD.dolartoday
+  const dolarToday = dolarData.USD.sicad2
   return {
     props: {
       inventory,
@@ -57,9 +57,9 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
 
   useEffect(() => {
     if (customDolarActive) {
-      setDolarChange(customDolar+0.1)
+      setDolarChange(customDolar)
     } else {
-      setDolarChange(dolarToday+0.1)
+      setDolarChange(dolarToday)
     }
   },[customDolarActive, customDolar, dolarToday])
 
@@ -99,8 +99,8 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
     <div className={styles.inventory}>
       <h1>Lista de Precios</h1>
       <div className={styles.dolarMonitor}>
-        <p>Dolar Today: {dolarToday}</p>
-        <p>Dolar Compra: {dolarChange.toFixed(2)}</p>
+        <p>Dolar BCV: {dolarToday}</p>
+        {/* <p>Dolar Compra: {dolarChange.toFixed(2)}</p> */}
         <div className={styles.customDolarSelector}>
           <input type="checkbox" value="customDolarActive" checked={customDolarActive} onChange={(e) => handleCheck()}/>
           {customDolarActive ? <input type="number" value={customDolar} onChange={(e) => setCustomDolar(parseFloat(e.target.value || '0'))}/> : null}

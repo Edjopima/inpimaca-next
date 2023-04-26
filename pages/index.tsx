@@ -83,9 +83,9 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
 
   useEffect(() => {
     console.log(state.loggedInUser)
-    if (!state.loggedInUser) {
-      router.push('/login')
-    }
+    // if (!state.loggedInUser) {
+    //   router.push('/login')
+    // }
 
     if (state.dolarOptions?.length > 2) {
       const customDolarValue = state.dolarOptions[2]?.value

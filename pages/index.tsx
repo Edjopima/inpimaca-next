@@ -64,9 +64,33 @@ const Home:NextPage<Props> = ({inventory, dolarToday}) => {
   },[customDolarActive, customDolar, dolarToday])
 
   useEffect(() => {
+    const dolarOptions:Array<DolarType> = [{
+      name: "Dolar Today",
+      value: dolarToday,
+    },{
+      name: "Dolar Compra",
+      value: dolarToday+0.1
+    }
+  ]
+  if (customDolarActive) {
+    dolarOptions.push({
+      name: 'Dolar Custom',
+      value: dolarChange
+    })
+  }
+  dispatch({type:'SET_DOLAR',payload:dolarOptions})
+  },[dolarChange])
+
+  useEffect(() => {
     console.log(state.loggedInUser)
     if (!state.loggedInUser) {
       router.push('/login')
+    }
+
+    if (state.dolarOptions?.length > 2) {
+      const customDolarValue = state.dolarOptions[2]?.value
+      setCustomDolarActive(true)
+      setCustomDolar(customDolarValue-0.1)
     }
   }, [])
 

@@ -6,7 +6,24 @@ import Trash from '../../public/images/trash-solid.svg'
 const index = () => {
   const {state:{shoppingCart, dolarOptions },dispatch} = useContext(Context);  
   const total = shoppingCart.reduce((acc,item) => acc + item.quantity * item.product.price,0)
-  const totalBs = (dolarOptions.length>0)? total * dolarOptions[1].value:0
+  
+
+  const calculateTotal = (base: any) => {
+    let dolar = 0
+    if (dolarOptions.length>2) {
+      dolar = dolarOptions[2].value
+      return base * dolar
+    }
+
+    if (dolarOptions.length>0) {
+      dolar = dolarOptions[1]?.value
+      return base * dolar
+    }
+
+    return base * dolar
+  }
+
+  const totalBs = calculateTotal(total)
 
   const remove = (id:number) => {
     dispatch({type:'REMOVE_FROM_CART',payload:id})
